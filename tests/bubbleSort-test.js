@@ -6,6 +6,8 @@ const chai = require('chai');
 const assert = chai.assert;
 
 const bubbleSort = require('../scripts/bubbleSort.js');
+const randomArray = require('../tests/largeArray.js');
+
 
 describe('Bubble Sort', function () {
 
@@ -26,7 +28,12 @@ describe('Bubble Sort', function () {
   	it('should sort a small array of numbers that includes negative numbers', () => {
     	const numbers = [4, 3, -2, 2, 1, -5];
 		assert.deepEqual(bubbleSort(numbers), [-5, -2, 1, 2, 3, 4] );
-  	});  	
+  	});  
+
+    it ('should sort an array of 10,000 numbers', () =>{
+      const largeArray = randomArray(1, 9, 10000)
+      assert.deepEqual(bubbleSort(largeArray), largeArray.sort())
+    });	
 
   });
 
